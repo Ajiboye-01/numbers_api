@@ -10,6 +10,7 @@ import java.util.*;
 @RequestMapping("/api")
 @CrossOrigin(origins = "*") // Allows CORS for all origins
 public class NumberClassifierController {
+
     @GetMapping("/classify-number")
     public ResponseEntity<?> classifyNumber(@RequestParam String number) {
         try {
@@ -23,12 +24,12 @@ public class NumberClassifierController {
             response.put("fun_fact", getFunFact(num));
 
             return ResponseEntity.ok(response);
-            } catch (NumberFormatException e) {
-                Map<String, Object> errorResponse = new HashMap<>();
-                errorResponse.put("number", number);
-                errorResponse.put("error", true);
-                return ResponseEntity.badRequest().body(errorResponse);
-            }
+        } catch (NumberFormatException e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("number", number);
+            errorResponse.put("error", true);
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
     }
 
     private boolean isPrime(int num) {
@@ -43,7 +44,7 @@ public class NumberClassifierController {
         int sum = 1;
         for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) sum += i;
-            }
+        }
         return sum == num;
     }
 
