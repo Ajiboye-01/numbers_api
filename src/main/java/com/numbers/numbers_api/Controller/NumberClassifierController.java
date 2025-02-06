@@ -7,11 +7,11 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("")
 @CrossOrigin(origins = "*") // Allows CORS for all origins
 public class NumberClassifierController {
 
-    @GetMapping("/classify-number")
+    @GetMapping("")
     public ResponseEntity<?> classifyNumber(@RequestParam String number) {
         try {
             int num = Integer.parseInt(number);
